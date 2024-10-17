@@ -1,9 +1,9 @@
 require('dotenv').config({ debug: true });
 
 const express = require('express') 
-require('./db/mongoose')
+require('./database/mongoose')
 const cors = require('cors'); 
-//const userRouter = require('./routers/user') 
+const userRouter = require('./routers/athleteuser') 
 //const studyGroupRouter = require('./routers/studygroup') 
 //const notificationRouter = require('./routers/notification')
 
@@ -17,11 +17,12 @@ app.use(function (req, res, next) {
 }); 
   
 app.use(express.json()) 
-//app.use(userRouter) 
+app.use(userRouter) 
 //app.use(studyGroupRouter)
 //app.use(notificationRouter)
 
-const port = process.env.PORT || 3000 
+const port = process.env.PORT || 3010 
+
 app.listen(port, () => { 
     console.log('Server is up on port ' + port) 
 })
